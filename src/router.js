@@ -12,7 +12,8 @@ Vue.use(Router);
 export default new Router({
   mode: "history",
   routes: [
-    { path: "/", components: {
+    { path: "/",
+      components: {
       default: Home,
       header: HeaderHome
     }
@@ -22,11 +23,18 @@ export default new Router({
         default: Users,
         header: HeaderUsers
       },
-      props: true,
+      props: {
+        default: true,
+        header: false
+      },
       children: [
         { path: "posts", component: UsersPosts },
         { path: "profile", component: UsersProfile, name: "users-id-profile" }
       ]
+    },
+    {
+      path: "*",
+      redirect: "/"
     }
   ]
 });
