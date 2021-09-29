@@ -4,6 +4,8 @@
     <button @click="toUsers">Usersのページに行く</button>
     <p>{{ doubleCount }}</p>
     <p>{{ tripleCount }}</p>
+    <input type="text" v-model="messege">
+    <p>{{messege}}</p>
   </div>
 </template>
 
@@ -13,6 +15,14 @@ import { mapGetters } from "vuex";
   export default {
     computed: {
       ...mapGetters(["doubleCount", "tripleCount"]),
+      messege: {
+        get() {
+          return this.$store.getters.messege;
+        },
+        set(value) {
+          this.$store.dispatch("updateMessege", value);
+        }
+      }
     },
     methods: {
       toUsers() {
