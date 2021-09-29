@@ -1,6 +1,9 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import count from './modules/count';
+import getters from './getters';
+import mutations from './mutations';
+import actions from './actions';
 
 Vue.use(Vuex);
 
@@ -9,19 +12,9 @@ new Vuex.Store({
   state: {
     messege: ""
   },
-  getters: {
-    messege: state => state.messege
-  },
-  mutations: {
-    updateMessege(state, newMessege) {
-      state.messege = newMessege;
-    }
-  },
-  actions: {
-    updateMessege({commit}, newMessege) {
-      commit("updateMessege", newMessege);
-    }
-  },
+  getters,
+  mutations,
+  actions,
   modules: {
     count
   }
